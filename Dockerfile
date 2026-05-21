@@ -40,6 +40,9 @@ ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
 
+# Enable local file-based GraphQL code generation for builds
+ENV GENERATE_FROM_FILE=true
+
 RUN pnpm build
 
 # Production image, copy all the files and run next

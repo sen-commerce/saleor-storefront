@@ -1,0 +1,26 @@
+{
+	"name": "Saleor Storefront",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": ".."
+	},
+	"workspaceFolder": "/app",
+	"forwardPorts": [3000],
+	"portsAttributes": {
+		"3000": {
+			"label": "Storefront"
+		}
+	},
+	"postCreateCommand": "pnpm install && pnpm run codegen",
+	"postStartCommand": "pnpm dev",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"bradlc.vscode-tailwindcss",
+				"esbenp.prettier-vscode",
+				"dbaeumer.vscode-eslint",
+				"ms-vscode.vscode-typescript-next"
+			]
+		}
+	}
+}

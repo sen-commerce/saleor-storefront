@@ -213,6 +213,10 @@ async function fetchWithRetry(
 	operationName: string,
 	variablesForLog?: string,
 ): Promise<FetchResult> {
+	if (process.env.GENERATE_FROM_FILE === "true") {
+		return networkError("Bypassing API request during Docker build since backend is offline");
+	}
+
 	const url = process.env.NEXT_PUBLIC_SALEOR_API_URL;
 	if (!url) {
 		return networkError("Missing NEXT_PUBLIC_SALEOR_API_URL env variable");
@@ -411,6 +415,10 @@ interface RawGraphQLOptions {
  * }
  */
 export async function executeRawGraphQL<T = unknown>(options: RawGraphQLOptions): Promise<GraphQLResult<T>> {
+	if (process.env.GENERATE_FROM_FILE === "true") {
+		return networkError("Bypassing API request during Docker build since backend is offline");
+	}
+
 	const url = process.env.NEXT_PUBLIC_SALEOR_API_URL;
 	if (!url) {
 		return networkError("Missing NEXT_PUBLIC_SALEOR_API_URL env variable");
