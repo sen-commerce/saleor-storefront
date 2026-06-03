@@ -34,7 +34,7 @@ export function CheckoutHeader({ step, onStepClick, isShippingRequired = true }:
 				<div className="flex items-center justify-between">
 					{/* Logo */}
 					<Link href="/" className="flex items-center">
-						<Logo className="h-7 w-auto" />
+						<Logo className="h-9 w-auto" />
 					</Link>
 
 					{/* Progress Steps - Desktop */}

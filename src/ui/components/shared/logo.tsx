@@ -44,7 +44,7 @@ export const Logo = ({ className, ariaLabel = "Paper by Saleor", inverted = fals
 				src={lightModeLogo}
 				alt={ariaLabel}
 				width={100}
-				height={23}
+				height={36}
 				className={`dark:hidden ${baseStyles} ${className ?? ""}`}
 			/>
 			{/* Dark mode */}
@@ -53,7 +53,7 @@ export const Logo = ({ className, ariaLabel = "Paper by Saleor", inverted = fals
 				src={darkModeLogo}
 				alt={ariaLabel}
 				width={100}
-				height={23}
+				height={36}
 				className={`hidden dark:block ${baseStyles} ${className ?? ""}`}
 			/>
 		</>
