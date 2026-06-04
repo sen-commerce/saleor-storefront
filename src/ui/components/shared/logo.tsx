@@ -34,7 +34,7 @@ export const Logo = ({ className, ariaLabel = "Paper by Saleor", inverted = fals
 
 	// Base styles: preserve aspect ratio to prevent CLS
 	// Height classes (e.g., h-7) will work correctly with w-auto
-	const baseStyles = "aspect-[100/23]";
+	// const baseStyles = "aspect-[100/23]";
 
 	return (
 		<>
@@ -45,7 +45,7 @@ export const Logo = ({ className, ariaLabel = "Paper by Saleor", inverted = fals
 				alt={ariaLabel}
 				width={100}
 				height={36}
-				className={`dark:hidden ${baseStyles} ${className ?? ""}`}
+				className={`dark:hidden ${className ?? ""}`}
 			/>
 			{/* Dark mode */}
 			{/* eslint-disable-next-line @next/next/no-img-element */}
@@ -54,7 +54,7 @@ export const Logo = ({ className, ariaLabel = "Paper by Saleor", inverted = fals
 				alt={ariaLabel}
 				width={100}
 				height={36}
-				className={`hidden dark:block ${baseStyles} ${className ?? ""}`}
+				className={`hidden dark:block ${className ?? ""}`}
 			/>
 		</>
 	);

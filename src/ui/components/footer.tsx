@@ -63,9 +63,9 @@ export async function Footer({ channel }: { channel: string }) {
 		<footer className="bg-foreground text-background">
 			{/* Extra bottom padding on mobile to account for sticky add-to-cart bar */}
 			<div className="mx-auto max-w-7xl px-4 pb-24 pt-12 sm:px-6 sm:pb-12 lg:px-8 lg:py-16">
-				<div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:gap-12">
+				<div className="grid grid-cols-2 gap-8 md:grid-cols-5 lg:gap-12">
 					{/* Brand */}
-					<div className="col-span-2 md:col-span-1">
+					<div className="col-span-2 md:col-span-2">
 						<Link href={`/${channel}`} prefetch={false} className="mb-4 inline-block">
 							<Logo className="h-11 w-auto" inverted />
 						</Link>
@@ -77,7 +77,7 @@ export async function Footer({ channel }: { channel: string }) {
 					{/* Dynamic menu items from Saleor CMS */}
 					{menuItems.map((item) => (
 						<div key={item.id}>
-							<h4 className="mb-4 text-sm font-medium text-neutral-300">{item.name}</h4>
+							<h4 className="mb-4 text-lg font-semibold text-neutral-300">{item.name}</h4>
 							<ul className="space-y-3">
 								{item.children?.map((child) => {
 									if (child.category) {
@@ -192,21 +192,18 @@ export async function Footer({ channel }: { channel: string }) {
 					<p className="text-xs text-neutral-500">
 						<CopyrightText />
 					</p>
-					<div className="flex items-center gap-6">
-						<Link
-							href="/privacy"
-							prefetch={false}
-							className="text-xs text-neutral-500 transition-colors hover:text-neutral-300"
-						>
-							Privacy Policy
-						</Link>
-						<Link
-							href="/terms"
-							prefetch={false}
-							className="text-xs text-neutral-500 transition-colors hover:text-neutral-300"
-						>
-							Terms of Service
-						</Link>
+					<div className="flex gap-2 opacity-80">
+						{["10003", "10002", "10001", "10005", "10004"].map((name) => (
+							<div key={name} className="flex h-7 w-12 items-center justify-center rounded bg-white p-1">
+								<img
+									className="h-full w-full object-contain"
+									src={`/svg/${name}.svg`}
+									alt="Payment method"
+									loading="lazy"
+									decoding="async"
+								/>
+							</div>
+						))}
 					</div>
 				</div>
 			</div>
