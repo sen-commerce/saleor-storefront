@@ -1,0 +1,25 @@
+query BlogPostList($channel: String!) {
+	blogPosts(first: 100, channel: $channel) {
+		edges {
+			node {
+				id
+				title
+				slug
+				readingTimeMinutes
+				createdAt
+				isPublished
+				publishedAt
+				featuredImage
+				author {
+					id
+					name
+					avatarUrl
+				}
+				category {
+					id
+					name
+				}
+			}
+		}
+	}
+}

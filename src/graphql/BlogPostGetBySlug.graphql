@@ -1,0 +1,23 @@
+query BlogPostGetBySlug($slug: String!, $channel: String!) {
+	blogPost(slug: $slug, channel: $channel) {
+		id
+		title
+		slug
+		content
+		featuredComments
+		featuredImage
+		readingTimeMinutes
+		createdAt
+		updatedAt
+		author {
+			id
+			name
+			bio
+			avatarUrl
+		}
+		category {
+			id
+			name
+		}
+	}
+}

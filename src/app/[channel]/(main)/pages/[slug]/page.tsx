@@ -1,11 +1,9 @@
 import { notFound } from "next/navigation";
 import { type Metadata } from "next";
-import edjsHTML from "editorjs-html";
-import xss from "xss";
+import { createElement } from "react";
 import { PageGetBySlugDocument } from "@/gql/graphql";
 import { executePublicGraphQL } from "@/lib/graphql";
-
-const parser = edjsHTML();
+import { getTemplateForPageType } from "@/ui/components/page-templates";
 
 export const generateMetadata = async (props: { params: Promise<{ slug: string }> }): Promise<Metadata> => {
 	const params = await props.params;
@@ -35,20 +33,9 @@ export default async function Page(props: { params: Promise<{ slug: string }> })
 
 	const page = result.data.page;
 
-	const { title, content } = page;
+	// Dispatcher: route to the appropriate template based on PageType slug
+	const pageTypeSlug = page.pageType?.slug ?? "default";
+	const template = getTemplateForPageType(pageTypeSlug);
 
-	const contentHtml = content ? parser.parse(JSON.parse(content)) : null;
-
-	return (
-		<div className="mx-auto max-w-7xl p-8 pb-16">
-			<h1 className="text-3xl font-semibold">{title}</h1>
-			{contentHtml && (
-				<div className="prose">
-					{contentHtml.map((content) => (
-						<div key={content} dangerouslySetInnerHTML={{ __html: xss(content) }} />
-					))}
-				</div>
-			)}
-		</div>
-	);
+	return createElement(template, { page });
 }
