@@ -23,7 +23,11 @@ loadEnvConfig(process.cwd());
 
 let schemaUrl = process.env.NEXT_PUBLIC_SALEOR_API_URL;
 
-if (process.env.GENERATE_FROM_FILE === "true" || process.env.GITHUB_ACTION === "generate-schema-from-file") {
+if (
+	process.env.GENERATE_FROM_FILE === "true" ||
+	process.env.GITHUB_ACTION === "generate-schema-from-file" ||
+	process.env.VERCEL === "1"
+) {
 	schemaUrl = "schema.graphql";
 }
 
